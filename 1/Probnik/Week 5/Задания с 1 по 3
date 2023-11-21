@@ -1,0 +1,141 @@
+import random
+import pygame
+import matplotlib
+
+class Character:
+    def __init__(self, health):
+        self.health = health
+
+    def attack(self):
+        return random.randint(1, 10)
+
+
+class Hero(Character):
+    def __init__(self, health):
+        super().__init__(health)
+
+    def attack(self):
+        return random.randint(5, 15)
+
+
+class Enemy(Character):
+    def __init__(self, health):
+       super().__init__(health)
+
+    def attack(self):
+        return random.randint(3,10)
+
+class Mage(Character):
+    def __init__(self, health):
+       super().__init__(health)
+
+    def attack(self):
+        return random.randint(15,30)
+
+
+# def battle(hero, enemy):
+#      i = 0
+#      while hero.health and mage.health and enemy.health > 0:
+#          i += 1
+#          print(i,'ход'"\t""XP героя:",'\'',hero.health,'\'', 'XP монстра:','\'',enemy.health,'\'')
+#          hero_damage = hero.attack()
+#          mage_damage = mage.attack()
+#          if hero_damage in range(5,15):
+#              enemy.health -= hero_damage
+#          else:
+#              enemy.health -= mage_damage
+#          print("Герой атаковал врага и нанес урон", hero_damage)
+#          if enemy.health <= 0:
+#              print("Герой победил!")
+#              break
+#          enemy_damage = enemy.attack()
+#          hero.health -= enemy_damage
+#          print("Враг атаковал героя и нанес урон", enemy_damage)
+#          if hero.health <= 0:
+#              print("Враг победил!")
+#              bre
+enemy = Enemy(200)
+hero = Hero(100)
+mage = Mage(65)
+save_enemy = enemy.health
+
+class Weapon_hero(): # востанавливает по 2 HP герою каждый ход, когда ХР монстра ниже 50%
+    def health(salf):
+        hero.health += 2
+        return hero.health
+
+
+class Weapon_mage(): # востанавливает по 2 HP герою каждый ход, когда ХР монстра ниже 50%
+    def health(salf):
+        mage.health += 8
+        return mage.health
+
+
+def battle_hero(hero,enemy):
+    calcul_enemy = 0
+    calcul_persons = 0
+    i = 0
+    while hero.health and mage.health and enemy.health > 0:
+        i += 1
+        print(i, 'ход'"\t""XP героя:", '\'', hero.health, '\'', 'XP монстра:', '\'', enemy.health, '\'')
+        hero_damage = hero.attack()
+        enemy.health -= hero_damage
+        print("Герой атаковал врага и нанес урон", hero_damage)
+        if enemy.health <= 0:
+            print("Герой победил!")
+            calcul_persons +=1
+            break
+        enemy_damage = enemy.attack()
+        hero.health -= enemy_damage
+        if enemy.health <= save_enemy / 2:
+            hero.health = Weapon_hero().health()
+        print("Враг атаковал героя и нанес урон", enemy_damage)
+        if hero.health <= 0:
+            print("Враг победил!")
+            calcul_enemy += 1
+            break
+
+
+def battle_mage(mage, enemy):
+    i = 0
+    calcul_enemy = 0
+    calcul_persons = 0
+    while hero.health and mage.health and enemy.health > 0:
+        i += 1
+        print(i, 'ход'"\t""XP героя:", '\'', mage.health, '\'', 'XP монстра:', '\'', enemy.health, '\'')
+        mage_damage = mage.attack()
+        enemy.health -= mage_damage
+        print("Герой атаковал врага и нанес урон", mage_damage)
+        if enemy.health <= 0:
+            print("Герой победил!")
+            calcul_persons += 1
+            break
+        enemy_damage = enemy.attack()
+        mage.health -= enemy_damage
+        if enemy.health <= save_enemy / 4:
+            mage.health = Weapon_mage().health()
+        print("Враг атаковал героя и нанес урон", enemy_damage)
+        if mage.health <= 0:
+            print("Враг победил!")
+            calcul_enemy += 1
+            break
+    # plt.tlile
+
+# vs = int(input('Сколько будет боёв?'))
+print('Маг имеет следующие характеристики:\n ''Здоровие :',mage.health,'\n','Атаку : От 15 до 30','\n',
+      'Воин имеет следующие характеристики:\n','Здоровье :',hero.health,'\n','Урон : От 5 до 15')
+print('Уникальное оружие мага востанавлиет по 8 очков здоровья каждый ход,'
+      ' если здоровие монстра ниже 25%\nУникальное оружие воина лечит его каждый ход по 2 очка, если здоровие монстра ниже половины   ')
+input_hero = input('Введите за кого вы будете сражаться за Мага или Воина, чтобы выбрать Мага введите 1, чтобы Воина 2 ')
+
+
+if input_hero == '1':
+    battle_mage(mage,enemy)
+if input_hero == '2':
+    battle_hero(hero,enemy)
+
+
+
+
+
+
