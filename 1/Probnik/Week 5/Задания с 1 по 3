@@ -1,5 +1,4 @@
 import random
-import pygame
 import matplotlib
 
 class Character:
@@ -33,27 +32,7 @@ class Mage(Character):
         return random.randint(15,30)
 
 
-# def battle(hero, enemy):
-#      i = 0
-#      while hero.health and mage.health and enemy.health > 0:
-#          i += 1
-#          print(i,'ход'"\t""XP героя:",'\'',hero.health,'\'', 'XP монстра:','\'',enemy.health,'\'')
-#          hero_damage = hero.attack()
-#          mage_damage = mage.attack()
-#          if hero_damage in range(5,15):
-#              enemy.health -= hero_damage
-#          else:
-#              enemy.health -= mage_damage
-#          print("Герой атаковал врага и нанес урон", hero_damage)
-#          if enemy.health <= 0:
-#              print("Герой победил!")
-#              break
-#          enemy_damage = enemy.attack()
-#          hero.health -= enemy_damage
-#          print("Враг атаковал героя и нанес урон", enemy_damage)
-#          if hero.health <= 0:
-#              print("Враг победил!")
-#              bre
+
 enemy = Enemy(200)
 hero = Hero(100)
 mage = Mage(65)
